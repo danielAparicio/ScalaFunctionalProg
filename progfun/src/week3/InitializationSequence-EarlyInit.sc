@@ -25,15 +25,17 @@ object InitializationSequence {
   //This is an anonymous class
   new B {val z="override with val"}               //> override with Lazy ,override with def , null , null
                                                   //| res0: InitializationSequence.B{} = InitializationSequence$$anonfun$main$1$$a
-                                                  //| non$1@50625c49
+                                                  //| non$1@6998e5d9
   
-
-  //IMP early initializer are no valid in traits, they are not initilized before the parent
-  //early init example
-  abstract class C {
+////////////////////////////////////////
+  
+  trait C {
     val x1: String
     println(x1)
   }
+  //IMP early initializer are no valid in traits (when we try to create an anonymous class),
+  //they are not initilized before the parent
+  //early init example
   class D extends {
     val x1: String = "hello"
   } with C {
@@ -42,6 +44,6 @@ object InitializationSequence {
   new D                                           //> hello
                                                   //| hello
                                                   //| res1: InitializationSequence.D = InitializationSequence$$anonfun$main$1$D$1@
-                                                  //| 69637577
+                                                  //| 6e955c85
   
 }
