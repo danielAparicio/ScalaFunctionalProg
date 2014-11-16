@@ -38,14 +38,7 @@ object exercise {
   
   
   
-  val numv = 5                                    //> numv  : Int = 5
-  val listv = List()                              //> listv  : List[Nothing] = List()
-  val arrayv = Array[Int](1)                      //> arrayv  : Array[Int] = Array(1)
   
-  
-  var numvr = 7                                   //> numvr  : Int = 7
-  var listvr = List()                             //> listvr  : List[Nothing] = List()
-  var arrayvr = Array[Int](1)                     //> arrayvr  : Array[Int] = Array(1)
   
   //----------------------------------------------------------------------------------------------
   
@@ -63,6 +56,15 @@ object exercise {
   //All the AnyVal instances are INMUTABLE VALUE INSTANCES, and all the AnyVal types are ABSTRACT FINAL.
   //Hence, none of them can be instantiated with NEW. Rather, new instances are created with literal values (e.g., 3.14 for a Double)
   //or by calling methods on instances that return new values.
+  
+  val numv = 5                                    //> numv  : Int = 5
+  val listv = List()                              //> listv  : List[Nothing] = List()
+  val arrayv = Array[Int](1)                      //> arrayv  : Array[Int] = Array(1)
+  
+  
+  var numvr = 7                                   //> numvr  : Int = 7
+  var listvr = List()                             //> listvr  : List[Nothing] = List()
+  var arrayvr = Array[Int](1)                     //> arrayvr  : Array[Int] = Array(1)
   
   
   def allval(numval:Int,listval:List[Int],arrayval:Array[Int]){
@@ -89,22 +91,23 @@ object exercise {
   arrayvr                                         //> res5: Array[Int] = Array(1)
   
   /////////////////////////////////////////////////////////
-  // mutable value inside a var and a val
+  // mutable value inside a var and a val, if the mutalbe object change
+  // the VAL, VAR value changes!!!!!!!!!!
   
   //mutable list buffer
-  
   var listbufA = ListBuffer(1)                    //> listbufA  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(1)
   
-  var listbugB = ListBuffer(listbufA)             //> listbugB  : scala.collection.mutable.ListBuffer[scala.collection.mutable.Li
-                                                  //| stBuffer[Int]] = ListBuffer(ListBuffer(1))
+  val listbugB = listbufA ++ ListBuffer(listbufA) //> listbugB  : scala.collection.mutable.ListBuffer[Any] = ListBuffer(1, ListBu
+                                                  //| ffer(1))
   //Same result being listbugB a var or a val
   
   listbufA += 2                                   //> res6: scala.collection.mutable.ListBuffer[Int] = ListBuffer(1, 2)
   
-  listbugB += ListBuffer(5)                       //> res7: scala.collection.mutable.ListBuffer[scala.collection.mutable.ListBuff
-                                                  //| er[Int]] = ListBuffer(ListBuffer(1, 2), ListBuffer(5))
+  listbugB                                        //> res7: scala.collection.mutable.ListBuffer[Any] = ListBuffer(1, ListBuffer(1
+                                                  //| , 2))
   //this is not a reassignment
   
+   
 }
 //TAIL RECURSION
 //IMP if you have a recursive function that calls herself as its last action (IMP not adding a value to the function or 2 functions)
