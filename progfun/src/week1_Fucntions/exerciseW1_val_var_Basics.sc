@@ -1,6 +1,7 @@
 package week1
 
 import scala.annotation.tailrec
+import scala.collection.mutable.ListBuffer
 
 object exercise {
 
@@ -87,8 +88,22 @@ object exercise {
   arrayv                                          //> res4: Array[Int] = Array(5)
   arrayvr                                         //> res5: Array[Int] = Array(1)
   
+  /////////////////////////////////////////////////////////
+  // mutable value inside a var and a val
   
+  //mutable list buffer
   
+  var listbufA = ListBuffer(1)                    //> listbufA  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(1)
+  
+  var listbugB = ListBuffer(listbufA)             //> listbugB  : scala.collection.mutable.ListBuffer[scala.collection.mutable.Li
+                                                  //| stBuffer[Int]] = ListBuffer(ListBuffer(1))
+  //Same result being listbugB a var or a val
+  
+  listbufA += 2                                   //> res6: scala.collection.mutable.ListBuffer[Int] = ListBuffer(1, 2)
+  
+  listbugB += ListBuffer(5)                       //> res7: scala.collection.mutable.ListBuffer[scala.collection.mutable.ListBuff
+                                                  //| er[Int]] = ListBuffer(ListBuffer(1, 2), ListBuffer(5))
+  //this is not a reassignment
   
 }
 //TAIL RECURSION
