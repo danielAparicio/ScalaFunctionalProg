@@ -90,11 +90,11 @@ object exercise {
   arrayv                                          //> res4: Array[Int] = Array(5)
   arrayvr                                         //> res5: Array[Int] = Array(1)
   
-  /////////////////////////////////////////////////////////
-  // mutable value inside a var and a val, if the mutalbe object change
-  // the VAL, VAR value changes!!!!!!!!!!
+  ////////////////////////////////////////////////////////////////////////////////
+  // Mutable value inside a var and a val, if the mutalbe object change
+  // The VAL, VAR reulst value CHANGES!!!!!!!!!!
   
-  //mutable list buffer
+  //Mutable list buffer
   var listbufA = ListBuffer(1)                    //> listbufA  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(1)
   
   val listbugB = listbufA ++ ListBuffer(listbufA) //> listbugB  : scala.collection.mutable.ListBuffer[Any] = ListBuffer(1, ListBu
@@ -106,6 +106,19 @@ object exercise {
   listbugB                                        //> res7: scala.collection.mutable.ListBuffer[Any] = ListBuffer(1, ListBuffer(1
                                                   //| , 2))
   //this is not a reassignment
+  
+  
+  //Now with primitives values inide the list
+  //The VAL, VAR reulst value DOESN'T CHANGES!!!!!!!!!!
+  
+  var factor = 2                                  //> factor  : Int = 2
+  
+  val result = List(2 * factor)                   //> result  : List[Int] = List(4)
+  //Same result being result a var or a val
+  
+  factor = 5
+  
+  result                                          //> res8: List[Int] = List(4)
   
    
 }
