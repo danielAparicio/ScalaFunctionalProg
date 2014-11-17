@@ -97,14 +97,14 @@ object exercise {
   //Mutable list buffer
   var listbufA = ListBuffer(1)                    //> listbufA  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(1)
   
-  val listbugB = listbufA ++ ListBuffer(listbufA) //> listbugB  : scala.collection.mutable.ListBuffer[Any] = ListBuffer(1, ListBu
-                                                  //| ffer(1))
+  val listbugB = ListBuffer(listbufA)             //> listbugB  : scala.collection.mutable.ListBuffer[scala.collection.mutable.Li
+                                                  //| stBuffer[Int]] = ListBuffer(ListBuffer(1))
   //Same result being listbugB a var or a val
   
   listbufA += 2                                   //> res6: scala.collection.mutable.ListBuffer[Int] = ListBuffer(1, 2)
   
-  listbugB                                        //> res7: scala.collection.mutable.ListBuffer[Any] = ListBuffer(1, ListBuffer(1
-                                                  //| , 2))
+  listbugB                                        //> res7: scala.collection.mutable.ListBuffer[scala.collection.mutable.ListBuff
+                                                  //| er[Int]] = ListBuffer(ListBuffer(1, 2))
   //this is not a reassignment
   
   
