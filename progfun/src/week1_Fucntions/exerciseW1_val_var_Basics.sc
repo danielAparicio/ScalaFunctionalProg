@@ -92,8 +92,8 @@ object exercise {
   
   ////////////////////////////////////////////////////////////////////////////////
   // Mutable value inside a var and a val, if the mutalbe object change
-  // The VAL, VAR reulst value CHANGES!!!!!!!!!!
   //IMP depending of how are we using that mutable object
+  //in this case we create the refernece of an objec to create another one, so DOESNT CHANGE
   
   //Mutable list buffer
   var listbufA = ListBuffer(1)                    //> listbufA  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(1)
@@ -107,7 +107,28 @@ object exercise {
   
   listbugB                                        //> res7: scala.collection.mutable.ListBuffer[Int] = ListBuffer(4, 1)
   //doest change!!!!
-   
+  
+  ///////////////////////////////////////////////////////
+  //Now with a refernece to a var inside the val
+  // in this case changes as we have an object in the val that has a reference to another object (the one hold in the var)
+  
+  var elem = ListBuffer(4)                        //> elem  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(4)
+  //var elem = 10
+  //if var is an elem = 10 the final val of list Elem DOESNT CHANGE
+  
+  
+  val listElem = List(elem)                       //> listElem  : List[scala.collection.mutable.ListBuffer[Int]] = List(ListBuffe
+                                                  //| r(4))
+  //Same result being listbugB a var or a val
+  //we are creating a new list with the elements of the mutable object , not using the reference of the mutalbe object
+  //So doesn´t change
+  
+  elem += 10                                      //> res8: scala.collection.mutable.ListBuffer[Int] = ListBuffer(4, 10)
+  
+  listElem                                        //> res9: List[scala.collection.mutable.ListBuffer[Int]] = List(ListBuffer(4, 1
+                                                  //| 0))
+  
+
   //Now with primitives values inide the list
   //or getting a value of a mutable object that is a inmutable value (ListBuffer.header of  ListBuffer[Int])
   //The VAL, VAR reulst value DOESN'T CHANGES!!!!!!!!!!
@@ -119,7 +140,8 @@ object exercise {
   
   factor = 5
   
-  result                                          //> res8: List[Int] = List(4)
+  result                                          //> res10: List[Int] = List(4)
+  
   
   //////////////////////////////////////////////////////
   //With Closures
@@ -128,11 +150,11 @@ object exercise {
   
   val applymultiplier = (n:Int) => 2 * multiplier //> applymultiplier  : Int => Int = <function1>
   
-  applymultiplier(2)                              //> res9: Int = 4
+  applymultiplier(2)                              //> res11: Int = 4
   
   multiplier = 4
   
-  applymultiplier(2)                              //> res10: Int = 8
+  applymultiplier(2)                              //> res12: Int = 8
   
   //the result of applying the closure Changes
   
