@@ -93,22 +93,23 @@ object exercise {
   ////////////////////////////////////////////////////////////////////////////////
   // Mutable value inside a var and a val, if the mutalbe object change
   // The VAL, VAR reulst value CHANGES!!!!!!!!!!
+  //IMP depending of how are we using that mutable object
   
   //Mutable list buffer
   var listbufA = ListBuffer(1)                    //> listbufA  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(1)
   
-  val listbugB = ListBuffer(listbufA)             //> listbugB  : scala.collection.mutable.ListBuffer[scala.collection.mutable.Li
-                                                  //| stBuffer[Int]] = ListBuffer(ListBuffer(1))
+  val listbugB = ListBuffer(4) ++ listbufA        //> listbugB  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(4, 1)
   //Same result being listbugB a var or a val
+  //we are creating a new list with the elements of the mutable object , not using the reference of the mutalbe object
+  //So doesn´t change
   
   listbufA += 2                                   //> res6: scala.collection.mutable.ListBuffer[Int] = ListBuffer(1, 2)
   
-  listbugB                                        //> res7: scala.collection.mutable.ListBuffer[scala.collection.mutable.ListBuff
-                                                  //| er[Int]] = ListBuffer(ListBuffer(1, 2))
-  //this is not a reassignment
-  
-  
+  listbugB                                        //> res7: scala.collection.mutable.ListBuffer[Int] = ListBuffer(4, 1)
+  //doest change!!!!
+   
   //Now with primitives values inide the list
+  //or getting a value of a mutable object that is a inmutable value (ListBuffer.header of  ListBuffer[Int])
   //The VAL, VAR reulst value DOESN'T CHANGES!!!!!!!!!!
   
   var factor = 2                                  //> factor  : Int = 2
@@ -119,6 +120,21 @@ object exercise {
   factor = 5
   
   result                                          //> res8: List[Int] = List(4)
+  
+  //////////////////////////////////////////////////////
+  //With Closures
+ 
+  var multiplier = 2                              //> multiplier  : Int = 2
+  
+  val applymultiplier = (n:Int) => 2 * multiplier //> applymultiplier  : Int => Int = <function1>
+  
+  applymultiplier(2)                              //> res9: Int = 4
+  
+  multiplier = 4
+  
+  applymultiplier(2)                              //> res10: Int = 8
+  
+  //the result of applying the closure Changes
   
    
 }
