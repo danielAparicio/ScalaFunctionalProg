@@ -149,6 +149,7 @@ object exercise {
   var multiplier = 2                              //> multiplier  : Int = 2
   
   val applymultiplier = (n:Int) => 2 * multiplier //> applymultiplier  : Int => Int = <function1>
+  //def val get the same value
   
   applymultiplier(2)                              //> res11: Int = 4
   
