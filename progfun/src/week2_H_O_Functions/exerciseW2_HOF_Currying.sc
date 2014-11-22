@@ -37,5 +37,17 @@ object exercise {
   
   //min 9 fixed points averagedamp ----> is a function that takes a function and return a function
    
+  ///////////////////////////////////////////////////////////////
+  //Currying example
+  val summ: (Int, Int) => Int = _ + _             //> summ  : (Int, Int) => Int = <function2>
+  val sumCurried = summ.curried(2)                //> sumCurried  : Int => Int = <function1>
+  sumCurried(2)                                   //> res4: Int = 4
   
+  
+  ///////////////////////////////////////////////////////////////
+  //A Closure function decared in different ways
+  var multiplier = 2                              //> multiplier  : Int = 2
+  val applymultiplier = (n:Int) => n * multiplier //> applymultiplier  : Int => Int = <function1>
+  val applymultiplier2 : Int => Int = _ * multiplier
+                                                  //> applymultiplier2  : Int => Int = <function1>
 }

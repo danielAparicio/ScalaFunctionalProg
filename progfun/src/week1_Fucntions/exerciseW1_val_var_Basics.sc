@@ -148,18 +148,25 @@ object exercise {
  
   var multiplier = 2                              //> multiplier  : Int = 2
   
-  val applymultiplier = (n:Int) => 2 * multiplier //> applymultiplier  : Int => Int = <function1>
+  val applymultiplier = (n:Int) => n * multiplier //> applymultiplier  : Int => Int = <function1>
   //def val get the same value
+  val applymultiplier2 : Int => Int = _ * multiplier
+                                                  //> applymultiplier2  : Int => Int = <function1>
+  //IMP: antoher way of coding the Closure Function
+ 
   
   applymultiplier(2)                              //> res11: Int = 4
+  applymultiplier2(2)                             //> res12: Int = 4
   
   multiplier = 4
   
-  applymultiplier(2)                              //> res12: Int = 8
+  applymultiplier(2)                              //> res13: Int = 8
+  applymultiplier2(2)                             //> res14: Int = 8
   
   //the result of applying the closure Changes
+  /////////////////////////////////////////////////////////////
   
-   
+  
 }
 //TAIL RECURSION
 //IMP if you have a recursive function that calls herself as its last action (IMP not adding a value to the function or 2 functions)
