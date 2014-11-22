@@ -152,18 +152,24 @@ object exercise {
   //def val get the same value
   val applymultiplier2 : Int => Int = _ * multiplier
                                                   //> applymultiplier2  : Int => Int = <function1>
+  val applymultiplier3 : Int => Int = x => x * multiplier
+                                                  //> applymultiplier3  : Int => Int = <function1>
   //IMP: antoher way of coding the Closure Function
  
   
   applymultiplier(2)                              //> res11: Int = 4
   applymultiplier2(2)                             //> res12: Int = 4
+  applymultiplier3(2)                             //> res13: Int = 4
   
   multiplier = 4
   
-  applymultiplier(2)                              //> res13: Int = 8
-  applymultiplier2(2)                             //> res14: Int = 8
+  applymultiplier(2)                              //> res14: Int = 8
+  applymultiplier2(2)                             //> res15: Int = 8
+  applymultiplier3(2)                             //> res16: Int = 8
   
   //the result of applying the closure Changes
+  //the function change and the val above the closures doesnt because calling the closure
+  //is apply(type)
   /////////////////////////////////////////////////////////////
   
   

@@ -50,4 +50,6 @@ object exercise {
   val applymultiplier = (n:Int) => n * multiplier //> applymultiplier  : Int => Int = <function1>
   val applymultiplier2 : Int => Int = _ * multiplier
                                                   //> applymultiplier2  : Int => Int = <function1>
+  val applymultiplier3 : Int => Int = x => x * multiplier
+                                                  //> applymultiplier3  : Int => Int = <function1>
 }
