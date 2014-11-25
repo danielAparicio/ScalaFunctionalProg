@@ -40,8 +40,11 @@ object exercise {
   ///////////////////////////////////////////////////////////////
   //Currying example
   val summ: (Int, Int) => Int = _ + _             //> summ  : (Int, Int) => Int = <function2>
+  val sumCurried2 = summ.curried                  //> sumCurried2  : Int => (Int => Int) = <function1>
+  sumCurried2(2)(2)                               //> res4: Int = 4
   val sumCurried = summ.curried(2)                //> sumCurried  : Int => Int = <function1>
-  sumCurried(2)                                   //> res4: Int = 4
+  sumCurried(2)                                   //> res5: Int = 4
+  
   
   
   ///////////////////////////////////////////////////////////////
