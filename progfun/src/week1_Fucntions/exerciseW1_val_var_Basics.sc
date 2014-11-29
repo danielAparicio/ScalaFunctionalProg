@@ -138,6 +138,8 @@ object exercise {
   val result = List(2 * factor)                   //> result  : List[Int] = List(4)
   //Same result being result a var or a val
   
+  
+  
   factor = 5
   
   result                                          //> res10: List[Int] = List(4)
