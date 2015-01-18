@@ -76,7 +76,7 @@ object exercise {
   def allvar(numvar:Int,listvar:List[Int],arrayvar:Array[Int]){
     //numvar = 4;   Error reasignment to val
     1 :: listvar
-    arrayvar(0)=1
+    arrayvar(0)=5
   }                                               //> allvar: (numvar: Int, listvar: List[Int], arrayvar: Array[Int])Unit
   
   allval(numv,listv,arrayv)
@@ -88,20 +88,25 @@ object exercise {
   
   //mutable the value changes in any case
   arrayv                                          //> res4: Array[Int] = Array(5)
-  arrayvr                                         //> res5: Array[Int] = Array(1)
+  arrayvr                                         //> res5: Array[Int] = Array(5)
   
   ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
   // Mutable value inside a var and a val, if the mutalbe object change
-  //IMP depending of how are we using that mutable object
-  //in this case we create the refernece of an objec to create another one, so DOESNT CHANGE
+  //IMP depending of HOW are we using that mutable object
+  
+  
+  
+  //In this case we create the REFERENCE of an objec to create another one, so DOESNT CHANGE
   
   //Mutable list buffer
   var listbufA = ListBuffer(1)                    //> listbufA  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(1)
   
   val listbugB = ListBuffer(4) ++ listbufA        //> listbugB  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(4, 1)
   //Same result being listbugB a var or a val
-  //we are creating a new list with the elements of the mutable object , not using the reference of the mutalbe object
-  //So doesn´t change
+  //we are creating a new list with the elements of another mutable object , not using the reference of the mutalbe object
+  //So changing listbufA DOESN'T CHANGE listbugB
   
   listbufA += 2                                   //> res6: scala.collection.mutable.ListBuffer[Int] = ListBuffer(1, 2)
   
@@ -109,7 +114,7 @@ object exercise {
   //doest change!!!!
   
   ///////////////////////////////////////////////////////
-  //Now with a refernece to a var inside the val
+  //Now with a REFERENCE to a VAR inside the VAL
   // in this case changes as we have an object in the val that has a reference to another object (the one hold in the var)
   
   var elem = ListBuffer(4)                        //> elem  : scala.collection.mutable.ListBuffer[Int] = ListBuffer(4)
@@ -119,19 +124,17 @@ object exercise {
   
   val listElem = List(elem)                       //> listElem  : List[scala.collection.mutable.ListBuffer[Int]] = List(ListBuffe
                                                   //| r(4))
-  //Same result being listbugB a var or a val
-  //we are creating a new list with the elements of the mutable object , not using the reference of the mutalbe object
-  //So doesn´t change
+  //Same result being listbugB a VAR or a VAL
+  //So changing listbufA CHANGES listbugB
   
   elem += 10                                      //> res8: scala.collection.mutable.ListBuffer[Int] = ListBuffer(4, 10)
   
   listElem                                        //> res9: List[scala.collection.mutable.ListBuffer[Int]] = List(ListBuffer(4, 1
                                                   //| 0))
   
-
-  //Now with primitives values inide the list
-  //or getting a value of a mutable object that is a inmutable value (ListBuffer.header of  ListBuffer[Int])
-  //The VAL, VAR reulst value DOESN'T CHANGES!!!!!!!!!!
+  ///////////////////////////////////////////////////
+  //Now with primitives values inide the list or getting a value of a mutable object that is a inmutable value (ListBuffer.header of  ListBuffer[Int])
+  //The VAL, VAR reulst value DOESN'T CHANGE!!!!!!!!!!
   
   var factor = 2                                  //> factor  : Int = 2
   
@@ -169,7 +172,7 @@ object exercise {
   applymultiplier2(2)                             //> res15: Int = 8
   applymultiplier3(2)                             //> res16: Int = 8
   
-  //the result of applying the closure Changes
+  //the result of applying the closure CHANGES the result
   //the function change and the val above the closures doesnt because calling the closure
   //is apply(type)
   /////////////////////////////////////////////////////////////
