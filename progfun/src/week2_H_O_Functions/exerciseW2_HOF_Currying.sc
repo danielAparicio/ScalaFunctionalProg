@@ -55,4 +55,19 @@ object exercise {
                                                   //> applymultiplier2  : Int => Int = <function1>
   val applymultiplier3 : Int => Int = x => x * multiplier
                                                   //> applymultiplier3  : Int => Int = <function1>
+  
+  //example Anonymous Function with case (be carefull here nor covering all cases)
+  val caseSample: Int => String = {
+  	case 5 => "cinco"
+  	case 4 => "cuatro"
+  	case _ => "ni idea"
+  }                                               //> caseSample  : Int => String = <function1>
+  
+  //example Partial Fuction
+  val caseSamplePartial: PartialFunction[Int,String] = {
+  	case 5 => "cinco"
+  	case 4 => "cuatro"
+  	case _ => "ni idea"
+  }                                               //> caseSamplePartial  : PartialFunction[Int,String] = <function1>
+  
 }
