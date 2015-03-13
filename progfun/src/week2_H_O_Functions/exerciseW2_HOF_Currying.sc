@@ -36,7 +36,9 @@ object exercise {
   fact(5)                                         //> res3: Int = 120
   
   //min 9 fixed points averagedamp ----> is a function that takes a function and return a function
+  
    
+  //NOTES AFTER WORKING WITH SCALA
   ///////////////////////////////////////////////////////////////
   //Currying example
   val summ: (Int, Int) => Int = _ + _             //> summ  : (Int, Int) => Int = <function2>
@@ -56,18 +58,34 @@ object exercise {
   val applymultiplier3 : Int => Int = x => x * multiplier
                                                   //> applymultiplier3  : Int => Int = <function1>
   
-  //example Anonymous Function with case (be carefull here nor covering all cases)
+  //example Anonymous Function with case (we cover all cases with _ in last place)
   val caseSample: Int => String =  { // OR _ match { OR (x:Int) => x match {
   	case 5 => "cinco"
   	case 4 => "cuatro"
   	case _ => "ni idea"
   }                                               //> caseSample  : Int => String = <function1>
   
-  //example Partial Fuction
+  //example Partial Fuction (not covering all cases) and also can apply another methods like andThen or orElse
   val caseSamplePartial: PartialFunction[Int,String] = {
   	case 5 => "cinco"
   	case 4 => "cuatro"
-  	case _ => "ni idea"
   }                                               //> caseSamplePartial  : PartialFunction[Int,String] = <function1>
   
+  //If a partial fuction is not matching any case is Throwing and scala.MatchError
+  
+  /////////////////////////////////////////////////////////////////////
+  //Explode Operator
+  // colection:_* , _* is exploding the collection
+  
+  val list = List(1,2,3,4,5,6)                    //> list  : List[Int] = List(1, 2, 3, 4, 5, 6)
+  val list2 = List(list:_*)                       //> list2  : List[Int] = List(1, 2, 3, 4, 5, 6)
+  
+  // Type*, with asterisc we can pass to the function a collection of elems of Type
+    
+  def foo(ints:Int*) = ints  //Returns a Seq[Int] //> foo: (ints: Int*)Seq[Int]
+  foo(list:_*)                                    //> res6: Seq[Int] = List(1, 2, 3, 4, 5, 6)
+  
+  //IMP : Also _* can be pass as argument to a regex only to match the regex regardless the number
+  //of groups that we have , val regex = whatEver.r ; regex(_*)
+    
 }
