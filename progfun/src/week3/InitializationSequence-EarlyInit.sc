@@ -25,7 +25,7 @@ object InitializationSequence {
   //This is an anonymous class using a trait
   new B {val z="override with val"}               //> override with Lazy ,override with def , null , null
                                                   //| res0: InitializationSequence.B{} = InitializationSequence$$anonfun$main$1$$a
-                                                  //| non$1@69637577
+                                                  //| non$1@2e746d6d
   
 ////////////////////////////////////////
   
@@ -45,13 +45,13 @@ object InitializationSequence {
   new D                                           //> hello
                                                   //| hello
                                                   //| res1: InitializationSequence.D = InitializationSequence$$anonfun$main$1$D$1@
-                                                  //| 315b5b68
+                                                  //| 7a3f437c
   
   //new D overriding a value when created
   new D {override val x1: String = "hello 2"}     //> null
                                                   //| null
                                                   //| res2: InitializationSequence.D{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$2@347db2f9
+                                                  //| anon$2@3afa6240
   
   //early init example with ANONYMOUS mixing C
   new {
@@ -61,7 +61,7 @@ object InitializationSequence {
   }                                               //> hello
                                                   //| hello
                                                   //| res3: InitializationSequence.C{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$3@17ef771b
-
+                                                  //| anon$3@693b004c
+  //IMP: Subclases don´t inherit private members (val,var,defs) !!!!
   
 }
