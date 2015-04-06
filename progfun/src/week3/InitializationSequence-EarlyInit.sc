@@ -25,7 +25,7 @@ object InitializationSequence {
   //This is an anonymous class using a trait
   new B {val z="override with val"}               //> override with Lazy ,override with def , null , null
                                                   //| res0: InitializationSequence.B{} = InitializationSequence$$anonfun$main$1$$a
-                                                  //| non$1@2e746d6d
+                                                  //| non$1@54ed21d3
   
 ////////////////////////////////////////
   
@@ -45,13 +45,13 @@ object InitializationSequence {
   new D                                           //> hello
                                                   //| hello
                                                   //| res1: InitializationSequence.D = InitializationSequence$$anonfun$main$1$D$1@
-                                                  //| 7a3f437c
+                                                  //| 4ff561a7
   
   //new D overriding a value when created
   new D {override val x1: String = "hello 2"}     //> null
                                                   //| null
                                                   //| res2: InitializationSequence.D{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$2@3afa6240
+                                                  //| anon$2@4f67c097
   
   //early init example with ANONYMOUS mixing C
   new {
@@ -61,7 +61,9 @@ object InitializationSequence {
   }                                               //> hello
                                                   //| hello
                                                   //| res3: InitializationSequence.C{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$3@693b004c
+                                                  //| anon$3@3afa6240
+                                                  
   //IMP: Subclases don´t inherit private members (val,var,defs) !!!!
+  //IMP: You can't/shouldn't override values and methods on a Object/Companion Object
   
 }
