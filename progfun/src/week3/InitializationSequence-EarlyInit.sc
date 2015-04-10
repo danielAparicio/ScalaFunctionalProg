@@ -1,5 +1,12 @@
 object InitializationSequence {
   
+  //LAZY VALS GENERAL:
+  /*is a good practice in seq prog to initialize the lazy val with an expression that does not
+  depends on the current state, in concurrent prog is more importante as lazy vals are affected
+  by non determinism
+  a lazy val is initialized at most once, if it;s not required it will never be initizalized*/
+  
+   
   //Solution for null pointers in abstracts :
   //Override val/def abstract with a lazy val
   //use early initializer
@@ -25,7 +32,7 @@ object InitializationSequence {
   //This is an anonymous class using a trait
   new B {val z="override with val"}               //> override with Lazy ,override with def , null , null
                                                   //| res0: InitializationSequence.B{} = InitializationSequence$$anonfun$main$1$$a
-                                                  //| non$1@54ed21d3
+                                                  //| non$1@1c47cf34
   
 ////////////////////////////////////////
   
@@ -44,14 +51,14 @@ object InitializationSequence {
   }
   new D                                           //> hello
                                                   //| hello
-                                                  //| res1: InitializationSequence.D = InitializationSequence$$anonfun$main$1$D$1@
-                                                  //| 4ff561a7
+                                                  //| res1: InitializationSequence.D = InitializationSequence$$anonfun$main$1$D$1
+                                                  //| @76de43f3
   
   //new D overriding a value when created
   new D {override val x1: String = "hello 2"}     //> null
                                                   //| null
                                                   //| res2: InitializationSequence.D{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$2@4f67c097
+                                                  //| anon$2@2495223b
   
   //early init example with ANONYMOUS mixing C
   new {
@@ -61,7 +68,7 @@ object InitializationSequence {
   }                                               //> hello
                                                   //| hello
                                                   //| res3: InitializationSequence.C{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$3@3afa6240
+                                                  //| anon$3@c487600
                                                   
   //IMP: Subclases don´t inherit private members (val,var,defs) !!!!
   //IMP: You can't/shouldn't override values and methods on a Object/Companion Object
