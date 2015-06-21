@@ -57,8 +57,9 @@ object exercise {
                                                   //> applymultiplier2  : Int => Int = <function1>
   val applymultiplier3 : Int => Int = x => x * multiplier
                                                   //> applymultiplier3  : Int => Int = <function1>
-  
-  //example Anonymous Function with case (we cover all cases with _ in last place)
+
+
+  //example of a Function with case (we cover all cases with _ in last place)
   val caseSample: Int => String =  { // OR _ match { OR (x:Int) => x match {
   	case 5 => "cinco"
   	case 4 => "cuatro"
