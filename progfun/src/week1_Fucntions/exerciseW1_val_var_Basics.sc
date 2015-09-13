@@ -44,13 +44,14 @@ object exercise {
   
   //IMPORTANT VAR and VAL remember the java one too
   
-  //The params to the functions are alaways passed as VAL (like in java, primitive value or object reference),
-  //so you cannot reassign inside (in java you can, if its a primitive
-  //has no effect if its an object you would not be changing the object that you have outside anymore)
+  //The params to the functions/methods are alaways passed as VAL (like in java, primitive value or object reference),
+  //so you cannot reassign inside (in java you can!!!, if its a primitive
+  //has no effect if its an object you would not be changing the object that you have outside anymore as you change the reference)
+  //We cannot have in SCALA method(var X:xx, var Y:xx) we never can re-assing a parameter withing the method body
   
-  //You can modify objects as long as you are using mutable types, if its inmutable (we create a new copy everytime)
+  //You can modify objects inside the method as long as you are using mutable types, if its inmutable (we create a new copy everytime)
   //no matter what you do inside the value of the var object outside doesn't change (in java for example if you pass an String param
-  //this will always keep the value outside as String in java is inmutable)
+  //this will always keep the value outside as String in java is inmutable (creates a new copy everytime))
   
   //In scala everything is an object (even the ones that corresponds to primitives in java):
   //All the AnyVal instances are INMUTABLE VALUE INSTANCES, and all the AnyVal types are ABSTRACT FINAL.
@@ -68,7 +69,7 @@ object exercise {
   
   
   def allval(numval:Int,listval:List[Int],arrayval:Array[Int]){
-  	//numval = 4;   Error reasignment to val
+  	//numval = 4;   Error re-assignment to val
     5 :: listval
     arrayval(0)=5
   }                                               //> allval: (numval: Int, listval: List[Int], arrayval: Array[Int])Unit
