@@ -41,6 +41,11 @@ object exercise {
   
   
   //----------------------------------------------------------------------------------------------
+
+
+  //call by val - name in function params:
+  //call-by-value functions compute the passed-in expression's value before calling the function, thus the same value is accessed every time. However,
+  //call-//by-name functions recompute the passed-in expression's value every time it is accessed
   
   //IMPORTANT VAR and VAL remember the java one too
   
