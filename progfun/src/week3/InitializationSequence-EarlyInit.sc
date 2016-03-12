@@ -1,15 +1,15 @@
 object InitializationSequence {
   //LAZY VALS GENERAL:
-  /*is a good practice in seq prog to initialize the lazy val with an expression that does not
+  /*Is a good practice in seq prog to initialize the lazy val with an expression that does not
   depends on the current state, in concurrent prog is more importante as lazy vals are affected
-  by non determinism
-  a lazy val is initialized at most once, if it;s not required it will never be initizalized*/
-    
+  by non determinis*/
+  //A lazy val is initialized at most once, if it;s not required it will never be initizalized
+  //Lazy val is not a silver bullet BE CAREFUL: https://blog.codecentric.de/en/2016/02/lazy-vals-scala-look-hood/
+  //If a lazy val is throwing an exception the first time is gonna be considered uninitialized and it´s ging to try next time in a later access
+  
   //Solution for null pointers in abstracts :
   //Override val/def abstract with a lazy val
   //use early initializer
-  
-  //Lazy val is not a silver bullet BE CAREFUL: https://blog.codecentric.de/en/2016/02/lazy-vals-scala-look-hood/
    
   trait A {
     lazy val x:String = "x"
@@ -25,10 +25,10 @@ object InitializationSequence {
     
     override lazy val x = "override with Lazy"
     
-    //if we override z in trait's A initialization is going to be null as that field is NOT going to be initialized in the superclass
+    //If we override z in trait's A initialization is going to be null as that field is NOT going to be initialized in the superclass
     override val z = "overriden z value"
     
-    //implementing an abstract val with a lazy val is going to avoid null, as the value of p will be evaluated when needed (just once)
+    //Implementing an abstract val with a lazy val is going to avoid null, as the value of p will be evaluated when needed (just once)
     lazy val p = "implementing p with a lazy val"
     
     //IMP!!!!:Cannot override/implement a var with a val, we cannot go from a more stable version to a more unstable
@@ -48,7 +48,7 @@ object InitializationSequence {
   new B {override val z="override with val"}      //> trait A :override with Lazy ,null , implementing p with a lazy val , null ,
                                                   //|  implementing with def
                                                   //| res0: InitializationSequence.B{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$1@1fc25624
+                                                  //| anon$1@7451b30d
 ////////////////////////////////////////
   
   trait C {
@@ -67,13 +67,12 @@ object InitializationSequence {
   new D                                           //> hello
                                                   //| hello
                                                   //| res1: InitializationSequence.D = InitializationSequence$$anonfun$main$1$D$1
-                                                  //| @139c21c1
-  
+                                                  //| @1ff32372
   //new D overriding a value when created (we need the override modifier is not as when we define an abstract one)
   new D {override val x1: String = "hello 2"}     //> null
                                                   //| null
                                                   //| res2: InitializationSequence.D{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$2@15ce859d
+                                                  //| anon$2@1f8bd6f9
   //early init example with ANONYMOUS mixing C
   new {
     val x1: String = "hello"
@@ -82,7 +81,7 @@ object InitializationSequence {
   }                                               //> hello
                                                   //| hello
                                                   //| res3: InitializationSequence.C{} = InitializationSequence$$anonfun$main$1$$
-                                                  //| anon$3@55cdaad2
+                                                  //| anon$3@29a6119a
   //IMP: Subclases don´t inherit private members (val,var,defs) !!!!
   //IMP: You can't/shouldn't override values and methods on a Object/Companion Object
 }
